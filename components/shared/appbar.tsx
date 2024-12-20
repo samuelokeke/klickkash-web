@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { CreditCard, LogOut, Settings, User } from "lucide-react";
+import { LogOut, Settings, UserIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,22 +13,30 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { User } from "@/lib/types/user.type";
+import { ModeToggle } from "./ThemeModeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const AppBar = () => {
+type AppbarProps = {
+  user: User;
+  logout: () => void;
+};
+
+const AppBar = ({ user, logout }: AppbarProps) => {
   const pathname = usePathname();
 
   const title = pathname.split("/")[1];
 
   return (
-    <header className="h-15 bg-white border-b mb-1">
+    <header className="h-15 sticky top-0 bg-background mb-1 shadow-sm">
       <div className="h-full flex items-center justify-between gap-4 px-4">
         <div className="flex-auto">
           <h1 className="text-xl font-medium capitalize">{title}</h1>
         </div>
+
+        <ModeToggle />
 
         <Separator orientation="vertical" />
 
@@ -33,45 +44,48 @@ const AppBar = () => {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2">
               <div className="text-left">
-                <p className="text-xs">Ehis Edoghie</p>
+                <p className="text-xs">
+                  {user?.first_name} {user?.last_name}
+                </p>
                 <p className="text-xs text-muted-foreground">Welcome back</p>
               </div>
 
               <Avatar>
                 <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>CN</AvatarFallback>
+                <AvatarFallback className="uppercase">
+                  {user?.first_name?.[0]}
+                  {user?.last_name?.[0]}
+                </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
 
           <DropdownMenuContent className="w-56">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
+
             <DropdownMenuSeparator />
+
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
-                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              <DropdownMenuItem asChild>
+                <Link href="/profile">
+                  <UserIcon className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard className="mr-2 h-4 w-4" />
-                <span>Billing</span>
-                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
-                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+
+              <DropdownMenuItem asChild>
+                <Link href="/">
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => logout()}>
               <LogOut className="mr-2 h-4 w-4" />
               <span>Log out</span>
-              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

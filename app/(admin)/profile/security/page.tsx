@@ -1,8 +1,5 @@
-import { Separator } from "@/components/ui/separator";
-import { ChevronRight } from "lucide-react";
-import Image from "next/image";
 import React from "react";
-
+import Image from "next/image";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,7 +8,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 const Page = () => {
   return (
@@ -19,15 +17,11 @@ const Page = () => {
       <Breadcrumb className="mb-3">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink>
-              <Link href="/">Home</Link>
-            </BreadcrumbLink>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink>
-              <Link href="/profile">Profile</Link>
-            </BreadcrumbLink>
+            <BreadcrumbLink href="/profile">Profile</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -36,7 +30,7 @@ const Page = () => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <section className="bg-white rounded-lg p-4">
+      <section className="bg-background rounded-lg p-4">
         <ul>
           <li className="flex justify-between items-center gap-2 p-4">
             <div className="w-8 h-8 bg-[#FFFBE6] rounded-full grid place-content-center">

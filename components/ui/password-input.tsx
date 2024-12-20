@@ -11,14 +11,14 @@ const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(({ classNam
   return (
     <div
       className={cn(
-        "flex items-center gap-2 pr-3 rounded border border-input bg-background focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 overflow-hidden",
+        "flex items-center gap-2 pr-3 rounded border border-input bg-background ring-offset-background focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 overflow-hidden",
         className
       )}
     >
       <input
         type={showPassword ? "text" : type}
         className={cn(
-          "flex h-[calc(2.5rem-0.125rem)] w-full px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-[calc(2.5rem-0.125rem)] w-full bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
         ref={ref}

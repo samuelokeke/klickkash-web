@@ -1,6 +1,4 @@
-import { Separator } from "@/components/ui/separator";
 import React from "react";
-
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,23 +7,22 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
+import getAuth from "@/app/actions/auth";
 
-const Page = () => {
+const Page = async () => {
+  const { user } = await getAuth();
+
   return (
     <div>
       <Breadcrumb className="mb-3">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink>
-              <Link href="/">Home</Link>
-            </BreadcrumbLink>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink>
-              <Link href="/profile">Profile</Link>
-            </BreadcrumbLink>
+            <BreadcrumbLink href="/profile">Profile</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -34,7 +31,7 @@ const Page = () => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <section className="bg-white rounded-lg p-4">
+      <section className="bg-background rounded-lg p-4">
         <ul>
           <li className="flex justify-between items-center gap-2 p-4">
             <p className="flex-auto text-sm">Username</p>
@@ -45,14 +42,16 @@ const Page = () => {
 
           <li className="flex justify-between items-center gap-2 p-4">
             <p className="flex-auto text-sm">Full name</p>
-            <p className="text-sm">Ehis Edoghie</p>
+            <p className="text-sm">
+              {user?.first_name} {user?.last_name}
+            </p>
           </li>
 
           <Separator />
 
           <li className="flex justify-between items-center gap-2 p-4">
             <p className="flex-auto text-sm">Email</p>
-            <p className="text-sm">johndoe@gmail.com</p>
+            <p className="text-sm">{user?.email ?? "—"}</p>
           </li>
 
           <Separator />

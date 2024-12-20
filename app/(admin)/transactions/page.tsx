@@ -99,7 +99,7 @@ const Page = () => {
         </div>
       </section>
 
-      <div className="bg-white overflow-y-auto py-8">
+      <div className="bg-background overflow-y-auto py-8">
         <div className="px-6 mb-6">
           <h1 className="text-xl">Recent Transactions</h1>
         </div>

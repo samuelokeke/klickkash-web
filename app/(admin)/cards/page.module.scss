@@ -1,7 +1,17 @@
 .mastercard {
-  @apply w-1/4 h-44 flex flex-col justify-end items-start bg-blue-700 rounded-xl border-2 bg-gradient-to-r from-[#0DA6C2] to-[#0E39C6] text-white p-4;
+  @apply w-1/4 h-44 flex flex-col justify-end items-start bg-blue-700 rounded-xl outline-2 outline-primary outline-offset-2 outline-dashed bg-gradient-to-r from-[#0DA6C2] to-[#0E39C6] text-white p-4;
 
   background-image: url(/assets/icons/mastercard.svg), url(/assets/icons/card-chip.svg);
   background-repeat: no-repeat;
   background-position: 95% 90%, 5% 50%;
+
+  :global {
+    .card_number {
+      @apply text-xl font-bold;
+
+      -webkit-text-stroke: 1px #615e5e;
+
+      // text-shadow: 1px 1px 0 #3c3b3b, -1px -1px 0 #3c3b3b, 1px -1px 0 #3c3b3b, -1px 1px 0 #3c3b3b, 1px 1px 0 #3c3b3b;
+    }
+  }
 }

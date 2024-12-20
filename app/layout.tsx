@@ -1,8 +1,44 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const rmneue = localFont({
+  src: [
+    {
+      path: "./fonts/RMNeue/RMNeue-Light.woff",
+      style: "normal",
+      weight: "300",
+    },
+    {
+      path: "./fonts/RMNeue/RMNeue-Regular.woff",
+      style: "normal",
+      weight: "400",
+    },
+    {
+      path: "./fonts/RMNeue/RMNeue-SemiBold.woff",
+      style: "normal",
+      weight: "600",
+    },
+    {
+      path: "./fonts/RMNeue/RMNeue-Bold.woff",
+      style: "normal",
+      weight: "700",
+    },
+    {
+      path: "./fonts/RMNeue/RMNeue-Black.woff",
+      style: "normal",
+      weight: "800",
+    },
+  ],
+});
+
+const inter = Inter({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"], display: "swap" });
+
+const clientId = process.env.GOOGLE_CLIENT_ID as string;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +51,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={rmneue.className}>
+        <GoogleOAuthProvider clientId={clientId}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
+        </GoogleOAuthProvider>
+
+        <Toaster />
+      </body>
     </html>
   );
 }

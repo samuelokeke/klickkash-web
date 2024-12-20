@@ -1,32 +1,35 @@
-"use client";
-
 import React from "react";
-import { Switch } from "@/components/ui/switch";
+import Link from "next/link";
+import Image from "next/image";
+import getAuth from "@/app/actions/auth";
 import { ChevronRight } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-const Page = () => {
-  const pathname = usePathname();
+const Page = async () => {
+  const { user } = await getAuth();
 
   return (
     <div className="space-y-6">
-      <section className="bg-white flex items-center gap-4 rounded-lg p-4">
+      <section className="bg-background flex items-center gap-4 rounded-lg p-4">
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarFallback>
+            {user?.first_name?.[0]}
+            {user?.last_name?.[0]}
+          </AvatarFallback>
         </Avatar>
 
         <div>
-          <p className="text-sm">Ehis Edoghie</p>
-          <p className="text-xs text-muted-foreground">ehissample@emailsample.com</p>
+          <p className="text-sm">
+            {user?.first_name} {user?.last_name}
+          </p>
+          <p className="text-xs text-muted-foreground">{user?.email}</p>
         </div>
       </section>
 
-      <section className="bg-white rounded-lg p-4">
+      <section className="bg-background rounded-lg p-4">
         <ul>
           <li className="flex items-center gap-2 p-4">
             <div className="w-8 h-8 bg-[#FFFBE6] rounded-full grid place-content-center">
@@ -35,7 +38,7 @@ const Page = () => {
 
             <p className="flex-auto text-sm">Profile</p>
 
-            <Link href={`${pathname}/info`}>
+            <Link href="/profile/info">
               <ChevronRight />
             </Link>
           </li>
@@ -61,7 +64,7 @@ const Page = () => {
 
             <p className="flex-auto text-sm">Security</p>
 
-            <Link href={`${pathname}/security`}>
+            <Link href="/profile/security">
               <ChevronRight />
             </Link>
           </li>

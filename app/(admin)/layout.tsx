@@ -10,8 +10,6 @@ export default async function AdminLayout({
 }>) {
   const { user } = await getAuth();
 
-  console.log(user, "user");
-
   return (
     <div className="bg-innerbackground flex">
       <aside className="fixed h-screen w-28 bg-background px-3 py-5">

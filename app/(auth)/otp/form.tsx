@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import { InputOTP, InputOTPGroup, InputOTPSlot1 } from "@/components/ui/input-otp";
@@ -11,15 +11,18 @@ type OTPFormProps = {};
 
 function OTPForm({}: OTPFormProps) {
   const searchParams = useSearchParams();
+  const [pending, startTransition] = useTransition();
   const [value, setValue] = useState("");
   const [error, setError] = useState<HttpResponse | null>(null);
 
   const submitToken = async () => {
-    const email = searchParams.get("email");
+    startTransition(async () => {
+      const email = searchParams.get("email");
 
-    const result = await verifyToken({ email: email, token: value });
+      const result = await verifyToken({ email: email, token: value });
 
-    setError(result);
+      setError(result);
+    });
   };
 
   return (
@@ -38,7 +41,7 @@ function OTPForm({}: OTPFormProps) {
         </InputOTP>
       </div>
 
-      <Button className="w-full bg-primary text-white" onClick={submitToken} disabled={value?.length !== 5}>
+      <Button className="w-full bg-primary text-white" onClick={submitToken} disabled={value?.length !== 5 || pending}>
         Continue
       </Button>
     </>

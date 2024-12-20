@@ -24,7 +24,7 @@ type AppbarProps = {
   logout: () => void;
 };
 
-const AppBar = ({ user, logout }: AppbarProps) => {
+const Appbar = ({ user, logout }: AppbarProps) => {
   const pathname = usePathname();
 
   const title = pathname.split("/")[1];
@@ -94,4 +94,4 @@ const AppBar = ({ user, logout }: AppbarProps) => {
   );
 };
 
-export default AppBar;
+export default Appbar;

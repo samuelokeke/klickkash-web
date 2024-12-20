@@ -1,6 +1,6 @@
 import getAuth from "../actions/auth";
 import { logout } from "../actions/auth";
-import AppBar from "@/components/shared/Appbar";
+import Appbar from "@/components/shared/Appbar";
 import SidePane from "@/components/shared/SidePane";
 
 export default async function AdminLayout({
@@ -19,7 +19,7 @@ export default async function AdminLayout({
       </aside>
 
       <div className="w-[calc(100%-7rem)] min-h-screen ml-28">
-        <AppBar user={user} logout={logout} />
+        <Appbar user={user} logout={logout} />
 
         <main className="p-6">{children}</main>
       </div>

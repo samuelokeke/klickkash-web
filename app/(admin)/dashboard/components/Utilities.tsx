@@ -17,7 +17,7 @@ const liVariant: Variants = {
 
 const Utilities = () => {
   return (
-    <ul className="h-full flex items-center justify-evenly gap-6 md:border">
+    <ul className="h-full flex flex-wrap items-center justify-evenly gap-6 md:border">
       <motion.li
         className="flex flex-col justify-center items-center gap-3 cursor-pointer"
         whileTap="tap"

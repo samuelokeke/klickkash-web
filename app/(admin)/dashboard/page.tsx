@@ -8,12 +8,12 @@ import Utilities from "./components/Utilities";
 const Dashboard = () => {
   return (
     <div className="space-y-6">
-      <section className="bg-background flex md:flex-row flex-col rounded-lg overflow-hidden">
+      <section className="bg-background flex md:flex-row flex-col rounded-lg">
         <div className="md:w-1/3 py-10 px-5 md:border-r">
           <WalletCard />
         </div>
 
-        <div className="md:w-2/3 py-10 px-5 overscroll-x-auto border">
+        <div className="md:w-2/3 py-10 px-5 overscroll-x-auto border overflow-hidden">
           <Utilities />
         </div>
       </section>

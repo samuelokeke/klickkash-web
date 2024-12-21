@@ -188,7 +188,7 @@ function SignUpForm() {
           <hr className="w-full border-t" />
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex md:flex-row flex-col items-center gap-4">
           <Button
             onClick={() => login()}
             className="flex-auto flex items-center gap-2 bg-muted text-foreground hover:bg-muted"

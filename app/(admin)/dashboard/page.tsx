@@ -13,7 +13,7 @@ const Dashboard = () => {
           <WalletCard />
         </div>
 
-        <div className="md:w-2/3 py-10 px-5">
+        <div className="md:w-2/3 py-10 px-5 overscroll-x-auto border">
           <Utilities />
         </div>
       </section>

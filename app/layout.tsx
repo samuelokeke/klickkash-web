@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import "./globals.css";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -34,6 +34,7 @@ const rmneue = localFont({
       weight: "800",
     },
   ],
+  display: "swap",
 });
 
 const inter = Inter({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"], display: "swap" });

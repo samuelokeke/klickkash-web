@@ -6,7 +6,7 @@ import AddCardSheet from "./AddCard";
 const Page = () => {
   return (
     <div>
-      <section className="flex flex-wrap gap-4 px-1">
+      <section className="flex md:flex-row flex-col flex-wrap md:gap-4 gap-8 px-1">
         <div className={styles.mastercard}>
           <p className="card_number">5000 0000 0000 0000</p>
 
@@ -19,8 +19,8 @@ const Page = () => {
           </div>
         </div>
 
-        <div className="w-1/4 h-44 bg-background rounded-xl grid place-content-center outline-2 outline-primary outline-offset-2 outline-dashed">
-          <div className=" flex flex-col justify-center items-center gap-4">
+        <div className="md:w-1/4 min-h-44 bg-background rounded-xl grid place-content-center outline-2 outline-primary outline-offset-2 outline-dashed">
+          <div className="flex flex-col justify-center items-center gap-4">
             <button className="p-2 rounded-full">
               <PlusIcon />
             </button>

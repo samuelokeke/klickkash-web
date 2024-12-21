@@ -1,5 +1,5 @@
 .mastercard {
-  @apply w-1/4 h-44 flex flex-col justify-end items-start bg-blue-700 rounded-xl outline-2 outline-primary outline-offset-2 outline-dashed bg-gradient-to-r from-[#0DA6C2] to-[#0E39C6] text-white p-4;
+  @apply md:w-1/4 h-44 flex flex-col justify-end items-start bg-blue-700 rounded-xl outline-2 outline-primary outline-offset-2 outline-dashed bg-gradient-to-r from-[#0DA6C2] to-[#0E39C6] text-white p-4;
 
   background-image: url(/assets/icons/mastercard.svg), url(/assets/icons/card-chip.svg);
   background-repeat: no-repeat;

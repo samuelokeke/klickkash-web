@@ -12,11 +12,11 @@ export default async function AdminLayout({
 
   return (
     <div className="bg-innerbackground flex">
-      <aside className="fixed h-screen w-28 bg-background px-3 py-5">
+      <aside className="fixed md:block hidden h-screen w-28 bg-background px-3 py-5">
         <SidePane logout={logout} />
       </aside>
 
-      <div className="w-[calc(100%-7rem)] min-h-screen ml-28">
+      <div className="md:w-[calc(100%-7rem)] w-full min-h-screen md:ml-28 ml-0">
         <Appbar user={user} logout={logout} />
 
         <main className="p-6">{children}</main>

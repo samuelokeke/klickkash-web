@@ -19,7 +19,7 @@ export default async function AdminLayout({
       <div className="md:w-[calc(100%-7rem)] w-full min-h-screen md:ml-28 ml-0">
         <Appbar user={user} logout={logout} />
 
-        <main className="p-6">{children}</main>
+        <main className="md:p-6 p-4">{children}</main>
       </div>
     </div>
   );

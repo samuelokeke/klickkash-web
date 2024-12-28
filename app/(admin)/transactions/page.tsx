@@ -101,7 +101,7 @@ const Page = () => {
 
       <div className="bg-background overflow-y-auto py-8">
         <div className="px-6 mb-6">
-          <h1 className="text-xl">Recent Transactions</h1>
+          <h1 className="text-xl">Recent transactions</h1>
         </div>
 
         <Table>

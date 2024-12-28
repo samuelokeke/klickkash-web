@@ -63,8 +63,8 @@ const WalletCard = () => {
   }
 
   return (
-    <div className="h-60 rounded-md bg-gradient-to-br from-primary/90 from-50% to-primary to-50% flex items-center justify-between py-8 px-6">
-      <div className="flex flex-col justify-between self-stretch">
+    <div className="md:h-60x h-48x rounded-md bg-gradient-to-br from-primary/90 from-50% to-primary to-50% flex items-center justify-between py-8 px-6">
+      <div className="flex flex-col justify-between self-stretch gap-y-4">
         <h3 className="text-white">My Wallet Balance</h3>
 
         <p className="text-3xl font-bold text-white">{showBalance ? "₦100,000.00" : "********"}</p>

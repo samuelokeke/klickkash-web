@@ -4,6 +4,7 @@ import Image from "next/image";
 import WalletCard from "./components/WalletCard";
 import TransactionList from "./components/TransactionList";
 import Utilities from "./components/Utilities";
+import { Button } from "@/components/ui/button";
 
 const Dashboard = () => {
   return (
@@ -20,8 +21,10 @@ const Dashboard = () => {
 
       <section className="grid grid-cols-12 gap-4">
         <div className="col-span-12 md:col-span-9 bg-background rounded-lg py-10">
-          <div className="px-6 mb-6">
+          <div className="flex justify-between px-6 mb-6">
             <h2 className="text-lg font-normal">Recent Transactions</h2>
+
+            <Button variant="secondary">See more</Button>
           </div>
 
           <TransactionList />
